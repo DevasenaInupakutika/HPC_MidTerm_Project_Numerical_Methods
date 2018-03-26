@@ -1,0 +1,10 @@
+('Solution Vector is: ', array([[-0.95148988],
+       [ 1.83388212],
+       [ 1.73882552],
+       ..., 
+       [ 0.16949721],
+       [ 0.28962215],
+       [-0.0607466 ]]))
+('Residual Norm error is: ', array([  1.40091785e-08]))
+('Time for solution is ', 208.772514, 's')
+Maximum number of iterations: 1

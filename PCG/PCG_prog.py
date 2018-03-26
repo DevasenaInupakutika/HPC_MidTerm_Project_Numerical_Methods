@@ -65,9 +65,14 @@ def pcg(A,b,x0,TOLERANCE, MAX_ITERATIONS,M):
     
     #Residue b-Ax
     r = b - np.dot(A, x)
+    
+    #Preconditioning (Matrix M) is implemented in this solver for conjugate gradient (CG) to ensure convergence of CG
+    #Standard method is to multiply M_inv with the Ax = b equation. It is chosen such that it is better conditioned than 
+    # A
+    #The preconditioner should approximate the inverse of A. Effective preconditioning dramatically improves the 
+    #rate of convergence, which implies that fewer iterations are needed to reach a given error tolerance.
     z = np.matmul(M_inv,r)
     p = z
-    
     r_k_norm = np.dot(r.T,p)
    
     #Start iterations   
@@ -80,6 +85,7 @@ def pcg(A,b,x0,TOLERANCE, MAX_ITERATIONS,M):
         beta = r_kplus1_norm / r_k_norm
         r_k_norm = r_kplus1_norm
         
+        #The algorithm terminates when either the relative or the absolute residual is below TOLERANCE
         if r_kplus1_norm < TOLERANCE:
             print 'Itr: ',i
             break
