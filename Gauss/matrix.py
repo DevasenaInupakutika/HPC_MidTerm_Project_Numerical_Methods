@@ -1,3 +1,5 @@
+#This file consists of the matrix functions that returns matrix row, column, height, width and printing the matrix
+
 def column(m, c):
     return [m[i][c] for i in range(len(m))]
 
